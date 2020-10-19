@@ -19,6 +19,7 @@ INSTALLATION_REQS = []
 # Development requirements
 DEVELOPMENT_REQS = [
     "black>=20.8b1",
+    "bump2version>=1.0.1",
     "coverage>=5.0.4",
     "pre-commit>=2.4.0",
     "pytest>=6.0.2",

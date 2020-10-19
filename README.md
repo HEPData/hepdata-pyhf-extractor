@@ -31,11 +31,14 @@ make test
 ```
 
 
-## Release tagging
-To tag a particular commit to mark a release:
+## Release version
+To bump and tag a particular commit to mark a release:
 
 ```sh
-make tag
+# Any of the following options
+make tag-major
+make tag-minor
+make tag-patch
 ```
 
 

@@ -12,11 +12,10 @@ check:
 	@black --check $(TESTS_FOLDER)
 
 
-.PHONY: tag
-tag:
-	@echo "Tagging current version"
-	@git tag --annotate "v$(PACKAGE_VERSION)" --message "Tag v$(PACKAGE_VERSION)"
-	@git push --follow-tags
+tag-%:
+	@echo "Bumping and tagging version"
+	@$(eval PART := $*)
+	@bump2version --current-version $(PACKAGE_VERSION) $(PART)
 
 
 .PHONY: test
