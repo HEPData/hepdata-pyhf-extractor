@@ -22,5 +22,5 @@
 # waive the privileges and immunities granted to it by virtue of its status
 # as an Intergovernmental Organization or submit itself to any jurisdiction.
 
-from .submission import BaseSubmissionSummarizer
-from .submission import V1SubmissionSummarizer
+from .pallet import BasePalletSummarizer
+from .pallet import V1PalletSummarizer

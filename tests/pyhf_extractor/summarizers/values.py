@@ -22,7 +22,7 @@
 # waive the privileges and immunities granted to it by virtue of its status
 # as an Intergovernmental Organization or submit itself to any jurisdiction.
 
-SUBMISSION_V1_DESCRIPTION = (
+PALLET_V1_DESCRIPTION = (
     ""
     "# JSON Likelihoods for 1Lbb Analysis"
     "\n\n"
@@ -60,7 +60,7 @@ SUBMISSION_V1_DESCRIPTION = (
     "\n\n"
 )
 
-SUBMISSION_V1_PATCHSETS = [
+PALLET_V1_PATCHSETS = [
     {
         "metadata": {
             "description": "signal patchset for the SUSY EWK 1Lbb analysis",
@@ -75,7 +75,7 @@ SUBMISSION_V1_PATCHSETS = [
     },
 ]
 
-SUBMISSION_V1_WORKSPACE = {
+PALLET_V1_WORKSPACE = {
     "version": "1.0.0",
     "channels": [
         {

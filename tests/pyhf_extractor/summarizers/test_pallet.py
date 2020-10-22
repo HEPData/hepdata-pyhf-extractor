@@ -27,29 +27,29 @@ import pytest
 from src.pyhf_extractor.extractors import *
 from src.pyhf_extractor.summarizers import *
 
-from .values import SUBMISSION_V1_DESCRIPTION
-from .values import SUBMISSION_V1_PATCHSETS
-from .values import SUBMISSION_V1_WORKSPACE
+from .values import PALLET_V1_DESCRIPTION
+from .values import PALLET_V1_PATCHSETS
+from .values import PALLET_V1_WORKSPACE
 from ..helpers import get_file_path
 
 
 @pytest.fixture(scope="module")
-def submission_v1_path() -> str:
-    """ Generates the path to the test Submission V1 """
+def pallet_v1_path() -> str:
+    """ Generates the path to the test Pallet V1 """
 
-    test_file_name = "submission_v1.json.gz"
+    test_file_name = "pallet_v1.json.gz"
     test_file_path = get_file_path(test_file_name)
 
     return test_file_path
 
 
-def test_base_submission_summarizer_valid_init():
+def test_base_pallet_summarizer_valid_init():
     """
     Test the correct initialization of extractors given a
     set of invalid Patchsets and Workspace versions
     """
 
-    summarizer = BaseSubmissionSummarizer
+    summarizer = BasePalletSummarizer
 
     p_extractor = summarizer.init_patchset_extractor("X.Y.Z")
     w_extractor = summarizer.init_workspace_extractor("X.Y.Z")
@@ -58,13 +58,13 @@ def test_base_submission_summarizer_valid_init():
     assert w_extractor.__class__ == DummyWorkspaceExtractor
 
 
-def test_base_submission_summarizer_invalid_init():
+def test_base_pallet_summarizer_invalid_init():
     """
     Test the correct initialization of extractors given a
     set of valid Patchsets and Workspace versions
     """
 
-    summarizer = BaseSubmissionSummarizer
+    summarizer = BasePalletSummarizer
 
     p_extractor = summarizer.init_patchset_extractor("1.0.0")
     w_extractor = summarizer.init_workspace_extractor("1.0.0")
@@ -73,16 +73,16 @@ def test_base_submission_summarizer_invalid_init():
     assert w_extractor.__class__ == V1WorkspaceExtractor
 
 
-def test_v1_submission_summarizer(submission_v1_path: str):
+def test_v1_pallet_summarizer(pallet_v1_path: str):
     """
-    Test the correct generation of a summary from a pyhf Submission V1
-    :param submission_v1_path: Submission file path
+    Test the correct generation of a summary from a pyhf Pallet V1
+    :param pallet_v1_path: Pallet file path
     """
 
-    summarizer = V1SubmissionSummarizer(submission_v1_path)
+    summarizer = V1PalletSummarizer(pallet_v1_path)
 
     info = summarizer.summarize()
 
-    assert info["description"] == SUBMISSION_V1_DESCRIPTION
-    assert info["patchsets"] == SUBMISSION_V1_PATCHSETS
-    assert info["workspace"] == SUBMISSION_V1_WORKSPACE
+    assert info["description"] == PALLET_V1_DESCRIPTION
+    assert info["patchsets"] == PALLET_V1_PATCHSETS
+    assert info["workspace"] == PALLET_V1_WORKSPACE

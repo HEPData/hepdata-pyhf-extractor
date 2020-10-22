@@ -36,8 +36,8 @@ from ..extractors import V1PatchsetExtractor
 from ..extractors import V1WorkspaceExtractor
 
 
-class BaseSubmissionSummarizer(metaclass=ABCMeta):
-    """ Interface for the Pyhf submission summarizers """
+class BasePalletSummarizer(metaclass=ABCMeta):
+    """ Interface for the Pyhf Pallet summarizers """
 
     patchset_extractors = {
         "1.0.0": V1PatchsetExtractor,
@@ -80,30 +80,30 @@ class BaseSubmissionSummarizer(metaclass=ABCMeta):
     @abstractmethod
     def summarize(self) -> dict:
         """
-        Summarizes a Pyhf submission information
-        :return: summarized Submission information
+        Summarizes a Pyhf Pallet information
+        :return: summarized Pallet information
         """
 
         raise NotImplementedError()
 
 
-class V1SubmissionSummarizer(BaseSubmissionSummarizer):
-    """ Pyhf submission V1 information summarizer """
+class V1PalletSummarizer(BasePalletSummarizer):
+    """ Pyhf Pallet V1 information summarizer """
 
-    def __init__(self, submission_file: str):
+    def __init__(self, pallet_file: str):
         """
-        Initializer for the Pyhf submission V1 summarizer
-        :param submission_file: path to the submission file
+        Initializer for the Pyhf Pallet V1 summarizer
+        :param pallet_file: path to the Pallet file
         """
 
-        with gzip.open(submission_file) as file:
+        with gzip.open(pallet_file) as file:
             data = json.load(file)
 
         assert "description" in data
         assert "patchsets" in data
         assert "workspace" in data
 
-        self.submission_data = data
+        self.pallet_data = data
 
     def __get_patchsets_summary(self) -> list:
         """
@@ -113,7 +113,7 @@ class V1SubmissionSummarizer(BaseSubmissionSummarizer):
 
         patchset_info = []
 
-        for patch in self.submission_data["patchsets"]:
+        for patch in self.pallet_data["patchsets"]:
             version = patch["version"]
             extractor = self.init_patchset_extractor(version)
             patchset_info.append(extractor.extract_info(patch))
@@ -126,7 +126,7 @@ class V1SubmissionSummarizer(BaseSubmissionSummarizer):
         :returns summarized Workspace information
         """
 
-        workspace = self.submission_data["workspace"]
+        workspace = self.pallet_data["workspace"]
         version = workspace["version"]
         extractor = self.init_workspace_extractor(version)
 
@@ -134,12 +134,12 @@ class V1SubmissionSummarizer(BaseSubmissionSummarizer):
 
     def summarize(self) -> dict:
         """
-        Summarizes a Pyhf submission information
-        :return: summarized Submission information
+        Summarizes a Pyhf Pallet information
+        :return: summarized Pallet information
         """
 
         return {
-            "description": self.submission_data["description"],
+            "description": self.pallet_data["description"],
             "patchsets": self.__get_patchsets_summary(),
             "workspace": self.__get_workspace_summary(),
         }
