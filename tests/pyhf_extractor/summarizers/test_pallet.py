@@ -27,7 +27,6 @@ import pytest
 from src.pyhf_extractor.extractors import *
 from src.pyhf_extractor.summarizers import *
 
-from .values import PALLET_V1_DESCRIPTION
 from .values import PALLET_V1_PATCHSETS
 from .values import PALLET_V1_WORKSPACE
 from ..helpers import get_file_path
@@ -83,6 +82,5 @@ def test_v1_pallet_summarizer(pallet_v1_path: str):
 
     info = summarizer.summarize()
 
-    assert info["description"] == PALLET_V1_DESCRIPTION
     assert info["patchsets"] == PALLET_V1_PATCHSETS
     assert info["workspace"] == PALLET_V1_WORKSPACE

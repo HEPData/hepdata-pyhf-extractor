@@ -99,7 +99,6 @@ class V1PalletSummarizer(BasePalletSummarizer):
         with gzip.open(pallet_file) as file:
             data = json.load(file)
 
-        assert "description" in data
         assert "patchsets" in data
         assert "workspace" in data
 
@@ -139,7 +138,6 @@ class V1PalletSummarizer(BasePalletSummarizer):
         """
 
         return {
-            "description": self.pallet_data["description"],
             "patchsets": self.__get_patchsets_summary(),
             "workspace": self.__get_workspace_summary(),
         }
