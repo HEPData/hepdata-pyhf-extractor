@@ -42,34 +42,34 @@ def pallet_v1_path() -> str:
     return test_file_path
 
 
-def test_base_pallet_summarizer_valid_init():
+def test_base_pallet_summarizer_patchset_init():
     """
-    Test the correct initialization of extractors given a
-    set of invalid Patchsets and Workspace versions
-    """
-
-    summarizer = BasePalletSummarizer
-
-    p_extractor = summarizer.init_patchset_extractor("X.Y.Z")
-    w_extractor = summarizer.init_workspace_extractor("X.Y.Z")
-
-    assert p_extractor.__class__ == DummyPatchsetExtractor
-    assert w_extractor.__class__ == DummyWorkspaceExtractor
-
-
-def test_base_pallet_summarizer_invalid_init():
-    """
-    Test the correct initialization of extractors given a
-    set of valid Patchsets and Workspace versions
+    Test the correct initialization of Patchset extractors
+    given a matching and a missing version
     """
 
     summarizer = BasePalletSummarizer
 
-    p_extractor = summarizer.init_patchset_extractor("1.0.0")
-    w_extractor = summarizer.init_workspace_extractor("1.0.0")
+    found_extractor = summarizer.init_patchset_extractor("1.0.0")
+    missing_extractor = summarizer.init_patchset_extractor("X.Y.Z")
 
-    assert p_extractor.__class__ == V1PatchsetExtractor
-    assert w_extractor.__class__ == V1WorkspaceExtractor
+    assert found_extractor.__class__ == V1PatchsetExtractor
+    assert missing_extractor.__class__ == DummyPatchsetExtractor
+
+
+def test_base_pallet_summarizer_workspace_init():
+    """
+    Test the correct initialization of Workspace extractors
+    given a matching and a missing version
+    """
+
+    summarizer = BasePalletSummarizer
+
+    found_extractor = summarizer.init_workspace_extractor("1.0.0")
+    missing_extractor = summarizer.init_workspace_extractor("X.Y.Z")
+
+    assert found_extractor.__class__ == V1WorkspaceExtractor
+    assert missing_extractor.__class__ == DummyWorkspaceExtractor
 
 
 def test_v1_pallet_summarizer(pallet_v1_path: str):
