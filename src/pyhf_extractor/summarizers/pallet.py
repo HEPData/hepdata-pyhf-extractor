@@ -103,9 +103,7 @@ class V1PalletSummarizer(BasePalletSummarizer):
             "Either the Pallet path or the Pallet data must be provided"
 
         if pallet_path is not None:
-            file = gzip.open(pallet_path)
-            data = json.load(file)
-            file.close()
+            data = self.__load_initial_data(pallet_path)
         else:
             data = pallet_data
 
@@ -113,6 +111,25 @@ class V1PalletSummarizer(BasePalletSummarizer):
         assert "workspace" in data
 
         self.pallet_data = data
+
+    @staticmethod
+    def __load_initial_data(pallet_path: str):
+        """
+        Loads the Pallet file content from the specified .gzip or .json file
+        :param pallet_path: path to the Pallet file
+        :return: Pallet file content
+        """
+
+        try:
+            file = gzip.open(pallet_path)
+            data = json.load(file)
+        except OSError:
+            file = open(pallet_path)
+            data = json.load(file)
+        finally:
+            file.close()
+
+        return data
 
     def __get_patchsets_summary(self) -> list:
         """
