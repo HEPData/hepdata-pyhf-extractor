@@ -84,3 +84,13 @@ def test_v1_pallet_summarizer(pallet_v1_path: str):
 
     assert info["patchsets"] == PALLET_V1_PATCHSETS
     assert info["workspace"] == PALLET_V1_WORKSPACE
+
+
+def test_v1_pallet_summarizer_error():
+    """
+    Test the correct Exception raise when no
+    Pallet path nor Pallet data is provided
+    """
+
+    with pytest.raises(AssertionError):
+        _ = V1PalletSummarizer()

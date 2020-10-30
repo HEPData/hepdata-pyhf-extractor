@@ -90,14 +90,24 @@ class BasePalletSummarizer(metaclass=ABCMeta):
 class V1PalletSummarizer(BasePalletSummarizer):
     """ Pyhf Pallet V1 information summarizer """
 
-    def __init__(self, pallet_file: str):
+    def __init__(self, pallet_path: str = None, pallet_data: dict = None):
         """
         Initializer for the Pyhf Pallet V1 summarizer
-        :param pallet_file: path to the Pallet file
+        :param pallet_path: path to the Pallet file (optional)
+        :param pallet_data: content of the Pallet file (optional)
         """
 
-        with gzip.open(pallet_file) as file:
+        assert \
+            (pallet_path is not None) or \
+            (pallet_data is not None), \
+            "Either the Pallet path or the Pallet data must be provided"
+
+        if pallet_path is not None:
+            file = gzip.open(pallet_path)
             data = json.load(file)
+            file.close()
+        else:
+            data = pallet_data
 
         assert "patchsets" in data
         assert "workspace" in data
