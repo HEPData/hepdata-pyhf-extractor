@@ -22,5 +22,18 @@
 # waive the privileges and immunities granted to it by virtue of its status
 # as an Intergovernmental Organization or submit itself to any jurisdiction.
 
-from .extractors import *
-from .summarizers import *
+from pathlib import Path
+
+
+def get_file_path(file_name: str) -> str:
+    """
+    Computes the absolute path to the desired test file
+    :param file_name: name of the desired test file
+    :return: absolute path
+    """
+
+    tests_folder = Path(__file__).parent.parent
+    files_folder = tests_folder.joinpath("files")
+
+    file_path = files_folder.joinpath(file_name)
+    return str(file_path)

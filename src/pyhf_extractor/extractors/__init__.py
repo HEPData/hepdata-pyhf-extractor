@@ -22,5 +22,10 @@
 # waive the privileges and immunities granted to it by virtue of its status
 # as an Intergovernmental Organization or submit itself to any jurisdiction.
 
-from .extractors import *
-from .summarizers import *
+from .patchsets import BasePatchsetExtractor
+from .patchsets import DummyPatchsetExtractor
+from .patchsets import V1PatchsetExtractor
+
+from .workspace import BaseWorkspaceExtractor
+from .workspace import DummyWorkspaceExtractor
+from .workspace import V1WorkspaceExtractor
