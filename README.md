@@ -9,6 +9,21 @@ submissions hold. Its evolution is coupled with the [hepdata-pyhf-visualizer][py
 JS package, as this one renders what gets summarized by this component.
 
 
+## Installation
+
+Via pip:
+```sh
+pip install hepdata-pyhf-extractor
+```
+
+Via GitHub (for developers):
+```
+git clone https://github.com/HEPData/hepdata-pyhf-extractor
+cd hepdata-pyhf-extractor
+pip install ".[dev]"
+```
+
+
 ## Development
 The package uses [Black][black-web], in addition to [pre-commit][pre-commit-web] to control its style.
 
