@@ -1,8 +1,8 @@
 # HEPData pyhf extractor
 
 ![GH Actions status][badge-actions-status]
-[![Coverage status](https://coveralls.io/repos/github/HEPData/hepdata-validator/badge.svg)][badge-coverage-status]
-[![Project license](https://img.shields.io/badge/License-GPL%20v2-blue.svg)][badge-project-license] 
+[![Coverage status][badge-coverage-image]][badge-coverage-status]
+[![Project license][badge-license-image]][badge-license-ref] 
 
 Python package to extract and summarize information from the [pyhf][pyhf-repository] submissions.
 
@@ -46,9 +46,11 @@ make tag-patch
 ```
 
 
-[badge-actions-status]: https://github.com/HEPData/hepdata-pyhf-extractor/workflows/Continuous%20Integration/badge.svg
+[badge-actions-status]: https://github.com/HEPData/hepdata-pyhf-extractor/workflows/Continuous%20Integration/badge.svg?branch=main
+[badge-coverage-image]: https://coveralls.io/repos/github/HEPData/hepdata-pyhf-extractor/badge.svg?branch=main
 [badge-coverage-status]: https://coveralls.io/github/HEPData/hepdata-pyhf-extractor?branch=main
-[badge-project-license]: https://opensource.org/licenses/GPL-2.0
+[badge-license-image]: https://img.shields.io/badge/License-GPL%20v2-blue.svg
+[badge-license-ref]: https://opensource.org/licenses/GPL-2.0
 [black-web]: https://black.readthedocs.io/en/stable/
 [pre-commit-web]: https://pre-commit.com/
 [pyhf-repository]: https://github.com/scikit-hep/pyhf
