@@ -26,6 +26,11 @@ DEVELOPMENT_REQS = [
     "pytest-cov>=2.10.0",
 ]
 
+# CI / CD requirements
+INTEGRATION_REQS = [
+    "coveralls>=2.1.2",
+]
+
 
 setup(
     name=NAME,
@@ -39,6 +44,7 @@ setup(
     install_requires=INSTALLATION_REQS,
     extras_require={
         "dev": DEVELOPMENT_REQS,
+        "ci": INTEGRATION_REQS,
     },
     include_package_data=True,
     license="GPLv2",
