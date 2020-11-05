@@ -68,16 +68,14 @@ To check for style inconsistencies:
 make check
 ```
 
-
-## Testing
+### Testing
 The package uses [pytest][pytest-web] to run all the tests:
 
 ```sh
 make test
 ```
 
-
-## Release version
+### Release version
 To bump and tag a particular commit to mark a release:
 
 ```sh
