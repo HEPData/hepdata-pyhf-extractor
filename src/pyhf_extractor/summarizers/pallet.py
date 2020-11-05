@@ -97,10 +97,12 @@ class V1PalletSummarizer(BasePalletSummarizer):
         :param pallet_data: content of the Pallet file (optional)
         """
 
+        # fmt: off
         assert \
             (pallet_path is not None) or \
             (pallet_data is not None), \
             "Either the Pallet path or the Pallet data must be provided"
+        # fmt: on
 
         if pallet_path is not None:
             data = self.__load_initial_data(pallet_path)
