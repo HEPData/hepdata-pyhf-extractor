@@ -32,6 +32,8 @@ A) Receive a Pallet file path for them to open and read it internally.
 ```python3
 from pyhf_extractor import V1PalletSummarizer
 
+# The provided file can be either .json.gz or .json
+pallet_path = "example_pallet.json.gz"
 pallet_path = "example_pallet.json"
 
 summarizer = V1PalletSummarizer(pallet_path=pallet_path)
@@ -44,7 +46,7 @@ import gzip
 import json
 from pyhf_extractor import V1PalletSummarizer
 
-pallet_path = "example_pallet.json"
+pallet_path = "example_pallet.json.gz"
 
 with gzip.open(pallet_path) as file:
     pallet_data = json.load(file)           
