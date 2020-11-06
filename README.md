@@ -1,6 +1,6 @@
 # HEPData pyhf extractor
 
-![GH Actions status][badge-actions-status]
+[![GH Actions status][badge-actions-image]][badge-actions-status]
 [![Coverage status][badge-coverage-image]][badge-coverage-status]
 [![Project license][badge-license-image]][badge-license-ref] 
 
@@ -46,7 +46,8 @@ make tag-patch
 ```
 
 
-[badge-actions-status]: https://github.com/HEPData/hepdata-pyhf-extractor/workflows/Continuous%20Integration/badge.svg?branch=main
+[badge-actions-image]: https://github.com/HEPData/hepdata-pyhf-extractor/workflows/Continuous%20Integration/badge.svg?branch=main
+[badge-actions-status]: https://github.com/HEPData/hepdata-pyhf-extractor/actions?query=workflow%3A%22Continuous%20Integration%22+branch%3Amain
 [badge-coverage-image]: https://coveralls.io/repos/github/HEPData/hepdata-pyhf-extractor/badge.svg?branch=main
 [badge-coverage-status]: https://coveralls.io/github/HEPData/hepdata-pyhf-extractor?branch=main
 [badge-license-image]: https://img.shields.io/badge/License-GPL%20v2-blue.svg
