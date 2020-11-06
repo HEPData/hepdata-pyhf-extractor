@@ -29,7 +29,16 @@ pip install ".[dev]"
 To extract basic information out of a `pyhf` Pallet file, the summarizers can:
 
 A) Receive a Pallet file path for them to open and read it internally.
+```python3
+from pyhf_extractor import V1PalletSummarizer
 
+pallet_path = "example_pallet.json"
+
+summarizer = V1PalletSummarizer(pallet_path=pallet_path)
+summary = summarizer.summarize()
+```
+
+B) Receive an already parsed Pallet file:
 ```python3
 import gzip
 import json
@@ -41,16 +50,6 @@ with gzip.open(pallet_path) as file:
     pallet_data = json.load(file)           
 
 summarizer = V1PalletSummarizer(pallet_data=pallet_data)
-summary = summarizer.summarize()
-```
-
-B) Receive an already parsed Pallet file:
-```python3
-from pyhf_extractor import V1PalletSummarizer
-
-pallet_path = "example_pallet.json"
-
-summarizer = V1PalletSummarizer(pallet_path=pallet_path)
 summary = summarizer.summarize()
 ```
 
